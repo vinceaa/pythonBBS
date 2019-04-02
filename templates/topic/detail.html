@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>话题详情</title>
+
+</head>
+<body>
+    <h3>话题详情页面</h3>
+    <a href="/topic">返回话题界面</a>
+    <br>
+    作者： <a href={{  url_for('user.profile', user_id=topic.topic_author().id)  }}>{{ topic.topic_author().username }}</a>
+    <br>
+    标题： 【{{ topic.topic_title }}】
+    <br>
+    发布时间：{{ topic.change_time(topic.created_time) }}
+
+    <br>
+    内容： {{ topic.topic_content }}
+    <br>
+    <hr>
+    <br>
+    {% for reply in topic.replys() %}
+        <h5>
+            <a href={{ url_for('user.profile', user_id=reply.replyer_name().id) }}>
+                <img src={{ url_for('index.uploads', filename=reply.replyer_name().avatar_path) }} height="40" width="40">
+            </a>
+            第{{ loop.index }}楼:
+            <a href={{ url_for('user.profile', user_id=reply.replyer_name().id) }}>{{ reply.replyer_name().username }}</a>
+            回复：{{ reply.reply_content }} {{ reply.time_flow(reply.created_time, current_time) }}
+        </h5>
+    {% endfor %}
+
+
+
+    回复这条话题：
+    <br>
+    <form action="/reply/infor" method="post">
+        <input type="input" hidden name="topic_id" value="{{ topic.id }}">
+        <input type="input" hidden name="replyer_id" value="{{ replyer_id }}">
+        <input type="input" hidden name="author_id" value="{{ topic.user_id }}">
+        <textarea name="reply_content" cols="30" rows="10"></textarea>
+        <button>添加回复</button>
+    </form>
+</body>
+</html>
+
+

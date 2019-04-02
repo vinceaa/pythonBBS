@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>板块编辑</title>
+</head>
+<body>
+    <form action={{ url_for('board.update', board_id=board_id) }} method="post">
+        <input type="input" name="board_name">
+        <button>提交</button>
+    </form>
+</body>
+</html>

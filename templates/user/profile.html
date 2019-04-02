@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+</head>
+<body>
+    <h2>你好 {{ user.username }}</h2>
+    <img src={{ url_for('index.uploads', filename=user.avatar_path) }} alt="">
+    <form action="/user/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button>上传头像</button>
+    </form>
+</body>
+</html>

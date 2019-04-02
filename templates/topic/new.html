@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增板块</title>
+</head>
+<body>
+    <form action="/topic/add" method="post">
+        <input type="input" hidden name="user_id" value="{{ user_id }}">
+        <select name="board_id">
+            {% for board in boards %}
+                <option value="{{ board.id }}">{{ board.board_name }}</option>
+            {% endfor %}
+
+        </select>
+        <input type="input" name="topic_title" placeholder="请输入话题的标题">
+        <textarea type="input" placeholder="输入你的话题" name="topic_content"></textarea>
+        <button>新增</button>
+    </form>
+</body>
+</html>

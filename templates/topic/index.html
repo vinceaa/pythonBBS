@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>话题页面</title>
+
+</head>
+<body>
+    <h1>话题页面</h1>
+    板块信息：
+    <a href="/topic">全部</a>
+    {% for board in boards %}
+        <a href={{ url_for('topic.classify', board_id=board.id) }}>{{ board.board_name }}</a>
+    {% endfor %}
+    <a href="/topic/new">发表话题</a>
+    <br>
+    载入所有的话题：
+    {% for topic in topics %}
+        <a href={{ url_for('topic.detail', topic_id=topic.id) }}>
+            <h5>
+                {{ topic.reply_number() }} / {{ topic.views_number }}<img src={{ url_for('index.uploads', filename=topic.topic_author().avatar_path) }} height="40" width="40">
+                {{ topic.topic_title }}{所属板块：{{ topic.board() }}}
+            {{ topic.time_flow(topic.created_time, current_time) }}
+        </h5></a>
+    {% endfor %}
+
+
+
+
+
+{##}
+{##}
+{#    <div id="main">#}
+{#        <div id="content">#}
+{#            <div class="panel">#}
+{#                <div class="header">#}
+{#                        <a href="/topic" class="topic-tab current-tab">全部</a>#}
+{#                            {% for board in boards %}#}
+{#                                <a class="topic-tab" href={{ url_for('topic.classify', board_id=board.id) }}>{{ board.board_name }}</a>#}
+{#                            {% endfor %}#}
+{#                    <div class="inner no-padding">#}
+{#                        <div id="topic_list">#}
+{##}
+{##}
+{##}
+{#                    <div class="inner no-padding">#}
+{#                        {% for topic in topics %}#}
+{#                        <div id="topic_list">#}
+{##}
+{#                                <div class="cell">#}
+{##}
+{#                                      <span class="reply_count pull-left">#}
+{##}
+{##}
+{#                                      <a class="user_avatar pull-left" href="/user/atian25">#}
+{#                                        <img src={{ url_for('index.uploads', filename=topic.topic_author().avatar_path) }}>#}
+{#                                      </a>#}
+{##}
+{##}
+{##}
+{#                                        <span class="count_of_replies" title="回复数">#}
+{#                                          {{ topic.reply_number() }}#}
+{#                                        </span>#}
+{#                                        <span class="count_seperator">/</span>#}
+{#                                        <span class="count_of_visits" title="点击数">#}
+{#                                          {{ topic.views_number }}#}
+{#                                        </span>#}
+{#                                      </span>#}
+{##}
+{##}
+{#                                      <a class="last_time pull-right" href={{ url_for('topic.detail', topic_id=topic.id) }}>#}
+{#                                        <span class="last_active_time">#}
+{#                                            {{ topic.time_flow(topic.created_time, current_time) }}#}
+{#                                        </span>#}
+{#                                      </a>#}
+{##}
+{##}
+{##}
+{#                                      <div class="topic_title_wrapper">#}
+{##}
+{##}
+{#                                        <span class="put_top">{{ topic.board() }}</span>#}
+{##}
+{##}
+{##}
+{#                                        <a class="topic_title" href={{ url_for('topic.detail', topic_id=topic.id) }}>#}
+{#                                          {{ topic.topic_title }}#}
+{#                                        </a>#}
+{#                                      </div>#}
+{##}
+{#                            </div>#}
+{#                            {% endfor %}#}
+{##}
+{##}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{##}
+{##}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{##}
+{##}
+{#    </div>#}
+
+</body>
+</html>
+

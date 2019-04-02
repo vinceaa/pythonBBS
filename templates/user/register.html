@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>用户注册</h1>
+    <form method='POST' action="{{ url_for("user.register_infor") }}">
+        <input type="input" placeholder="username" name="username">
+        <br>
+        <input type="input" placeholder="password" name="password">
+        <br>
+        <button>注册</button>
+    </form>
+    {{ infor }}
+    <br>
+    <a href="/user/login">返回登录</a>
+
+</body>
+</html>

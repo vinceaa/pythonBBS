@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+</head>
+<body>
+    <a href="/topic">主页</a>
+    <img width="40" height="40" src={{ url_for('index.uploads', filename=user.avatar_path) }} alt="">{{ user.username }}
+    <br>
+    <h3>最近创建的话题：</h3>
+    {% for topic in created_topic %}
+        <img width="40" height="40" src={{ url_for('index.uploads', filename=user.avatar_path) }} alt="">
+        <a href={{ url_for('topic.detail', topic_id=topic.id) }}>
+            {{ topic.topic_title }}
+        </a>
+
+        <a href={{ url_for('user.delete', topic_id=topic.id, user_id=user.id, token=token) }}>删除该条话题</a>
+        <br>
+    {% endfor %}
+    <h3>最近参与的话题：</h3>
+    {% for reply in join_topic %}
+        <a href={{ url_for('user.profile', user_id=reply.replyer_name().id) }}>
+            <img width="40" height="40" src={{ url_for('index.uploads', filename=reply.replyer_name().avatar_path) }}>
+        </a>
+        <a href={{ url_for('topic.detail', topic_id=reply.topic_id) }}>
+            {{ reply.topic_name().topic_title }}
+        </a>
+
+        <a href="">删除其中的评论</a>
+        <br>
+    {% endfor %}
+
+
+
+</body>
+</html>

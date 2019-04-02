@@ -1,0 +1,14 @@
+[
+  {
+    "id": 0,
+    "username": "vin",
+    "password": "dc4bfe689a7987d2df00bf342f60106c8e26621f18f7b7de180af3abaa83937e",
+    "avatar_path": "s4464207.jpg"
+  },
+  {
+    "id": 1,
+    "username": "gua",
+    "password": "dc4bfe689a7987d2df00bf342f60106c8e26621f18f7b7de180af3abaa83937e",
+    "avatar_path": "u20208103411727787089fm27gp0.jpg"
+  }
+]

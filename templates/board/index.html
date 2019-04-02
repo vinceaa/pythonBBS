@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>板块管理</title>
+</head>
+<body>
+    <h3>你好 {{ username }}</h3>
+    <h1>板块管理</h1>
+    <a href="/board/new">新增板块</a>
+    <a href="/user">返回主页</a>
+    {% for board in boards %}
+        <ul>
+            <li>
+                <h5>{{  board.board_name  }}
+                    <a href= {{  url_for('board.edit', board_id=board.id) }}>编辑</a>
+                    <a href= {{  url_for('board.delete', board_id=board.id) }}>删除</a>
+{#                    <a href="/board/delete">删除</a>#}
+                </h5>
+            </li>
+        </ul>
+    {% endfor %}
+
+</body>
+</html>

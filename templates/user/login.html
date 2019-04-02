@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>用户登录</h1>
+    <form method='POST' action="{{ url_for("user.login_infor") }}">
+        <input type="input" placeholder="username" name="username">
+        <br>
+        <input type="input" placeholder="password" name="password">
+        <br>
+        <button>提交</button>
+    <br>
+    {{ infor }}
+    </form>
+</body>
+</html>
